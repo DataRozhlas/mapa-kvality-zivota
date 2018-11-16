@@ -1,0 +1,36 @@
+#cont {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 1000px;
+}
+#map {
+    width: 80%;
+    height: 90vh;
+}
+
+#sliders {
+  width: 20%;
+  height: 90vh;
+  font-size: 10pt;
+}
+
+#sliders p {
+    margin-top: 0px;
+    margin-bottom: 2px;
+}
+
+#sliders h3 {
+    margin-top: 0px;
+    margin-bottom: 2px;
+}
+
+#tooltip {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 3px;
+    width: 300px;
+    min-height: 50px;
+}
