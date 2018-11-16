@@ -68,6 +68,16 @@ document.getElementById('sliders').innerHTML = radios;
 
 $('input[type=radio]').change(function(e) {
     koef_user[e.currentTarget.name] = parseFloat(e.currentTarget.defaultValue);
+    // prepocitat mins a maxs modelu
+    var sums = [];
+    Object.values(data).forEach(function(obec) {
+        var sm = 0.50519; //intercept
+        Object.keys(cols).forEach(function(c) {
+            sm += (obec[c] * koef[c] * koef_user[c]);
+        })
+        sums.push(1 - sm)
+    })
+    scl.domain([Math.min.apply(null, sums), Math.max.apply(null, sums)]); //rescaling scale
     tema.changed()
 });
 
