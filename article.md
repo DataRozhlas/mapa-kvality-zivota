@@ -4,7 +4,7 @@ published: "21. dubna 2018"
 coverimg: https://interaktivni.rozhlas.cz/brexit/media/cover.jpg
 coverimg_note: "Foto <a href='#'>ČTK</a>"
 styles: [https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.2.0/css/ol.css]
-libraries: [jquery, https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.2.0/build/ol.js, https://openmaptiles.org/maps/olms.js, https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js, ] #jquery, d3, highcharts, datatables
+libraries: [jquery, https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.2.0/build/ol.js, https://openmaptiles.org/maps/olms.js, https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js, https://unpkg.com/geostats@1.5.0/lib/geostats.min.js] #jquery, d3, highcharts, datatables
 options: [noheader, nopic] #wide, noheader (, nopic)
 ---
 <left>

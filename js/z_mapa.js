@@ -39,16 +39,16 @@ var cols = {
     'nezam': 'Nezaměstnanost',
     'emise': 'Emise',
     'doziti_m': 'Naděje dožití mužů',
-    'rozvody': 'Index rozvodovosti',
-    'ned_ms': 'Nedostuopnost MŠ',
-    'ned_ss': 'Nedostupnost SŠ',
-    'ned_zdrav': 'Nedostupnost zdrav. zař.',
+    'rozvody': 'Rozvodovost',
+    'ned_ms': 'Dostuopnost MŠ',
+    'ned_ss': 'Dostupnost SŠ',
+    'ned_zdrav': 'Dostupnost zdrav. zař.',
     'exe': 'Exekucí na obyv.',
     'prumysl': 'Podíl prac. v průmyslu',
     'bezpecnost': 'Bezpečnost',
     'prirust': 'Přírůstek obyvatel',
     'verici': 'Procento věřících',
-    'ned_net': 'Nedostupnost internetu',
+    'ned_net': 'Dostupnost internetu',
     'vz_okr': 'Vzdálenost k okresnímu městu'
 };
 
@@ -77,7 +77,12 @@ $('input[type=radio]').change(function(e) {
         })
         sums.push(1 - sm)
     })
-    scl.domain([Math.min.apply(null, sums), Math.max.apply(null, sums)]); //rescaling scale
+    
+    //rescaling scale
+    var gs = new geostats(sums);
+    var breaks = gs.getClassJenks(5);
+    colScl.domain(breaks.slice(1,5))
+    scl.domain([Math.min.apply(null, sums), Math.max.apply(null, sums)]); 
     tema.changed()
 });
 
@@ -116,7 +121,7 @@ var koef = {
  };
 
 var scl = d3.scale.linear().domain([0.15695, 0.66587]).range([0, 1]);
-var colScl = d3.scale.threshold().domain([0.2, 0.4, 0.6, 0.8]).range([
+var colScl = d3.scale.threshold().domain([0.3623311146, 0.44054185010000013, 0.4925579339, 0.5404225044]).range([
     'rgba(215,25,28,0.8)',
     'rgba(253,174,97,0.8)',
     'rgba(255,255,191,0.8)',
@@ -133,7 +138,15 @@ function getIndex(ftr) {
     Object.keys(cols).forEach(function(c) {
         index += (ob[c] * koef[c] * koef_user[c]);
     })
-    return [scl(1 - index), ob];
+    return [1 - index, ob];
+};
+
+function omitCol(v) {
+    if (v == -1) {
+        return 'rgba(255,255,255,0)';
+    } else {
+        return colScl(v);
+    };
 };
 
 function getColor(ftr) {
@@ -143,7 +156,7 @@ function getColor(ftr) {
       width: 0.3
     }),
     fill: new ol.style.Fill({
-      color: colScl(getIndex(ftr)[0]),
+      color: omitCol(getIndex(ftr)[0]),
       opacity: 0.5
     })
   })
@@ -166,8 +179,12 @@ var tema = new ol.layer.VectorTile({
 
 function makeTooltip(ftr) {
     var out = getIndex(ftr)
-    document.getElementById('tooltip').innerHTML = out[1].nazev + ' (okres ' + out[1].okres + ')<br>ASPEN index: '+ Math.round(out[0] * 1000) / 10;
-}
+    if (out[0] == -1) {
+        document.getElementById('tooltip').innerHTML = 'Vyberte obec';
+    } else {
+        document.getElementById('tooltip').innerHTML = out[1].nazev + ' (okres ' + out[1].okres + ')<br>ASPEN index: '+ Math.round(scl(out[0]) * 1000) / 10;
+    }
+};
 
 if (!(isEdge | isFirefox | isIE)) {
     map.on('pointermove', function(evt) {
