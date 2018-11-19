@@ -117,11 +117,11 @@ var koef = {
 
 var scl = d3.scale.linear().domain([0.15695, 0.66587]).range([0, 1]);
 var colScl = d3.scale.threshold().domain([0.2, 0.4, 0.6, 0.8]).range([
-    'rgba(254,229,217,0.8)',
-    'rgba(252,174,145,0.8)',
-    'rgba(251,106,74,0.8)',
-    'rgba(222,45,38,0.8)',
-    'rgba(165,15,21,0.8)'
+    'rgba(215,25,28,0.8)',
+    'rgba(253,174,97,0.8)',
+    'rgba(255,255,191,0.8)',
+    'rgba(166,217,106,0.8)',
+    'rgba(26,150,65,0.8)'
 ]);
 
 function getIndex(ftr) {
