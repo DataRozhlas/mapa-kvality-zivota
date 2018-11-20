@@ -59,7 +59,7 @@ Object.keys(cols).forEach(function(key){
         + '<label for="0_' + key + '">Vůbec</label>'
         + '<input type="radio" id="05_' + key + '" name="' + key + '" value="1" checked />'
         + '<label for="05_' + key + '">Trochu</label>'
-        + '<input type="radio" id="1_' + key + '" name="' + key + '" value="1.5"/>'
+        + '<input type="radio" id="1_' + key + '" name="' + key + '" value="2"/>'
         + '<label for="1_' + key + '">Hodně</label>'
         + '</form></p>'
 });
@@ -67,40 +67,58 @@ Object.keys(cols).forEach(function(key){
 document.getElementById('sliders').innerHTML = radios;
 
 $('input[type=radio]').change(function(e) {
+    //$('.over').css('z-index', 1000); //zobrazit loader
     koef_user[e.currentTarget.name] = parseFloat(e.currentTarget.defaultValue);
-    // prepocitat mins a maxs modelu
-    var sums = [];
-    Object.values(data).forEach(function(obec) {
-        var sm = 0.50519; //intercept
-        Object.keys(cols).forEach(function(c) {
-            sm += (obec[c] * koef[c] * koef_user[c]);
-        })
-        sums.push(1 - sm)
-    })
+        // prepocitat mins a maxs modelu
+        var sums = [];
+        Object.values(data).forEach(function(obec) {
+            var sm = 0.50519; //intercept
+            Object.keys(cols).forEach(function(c) {
+                sm += (obec[c] * koef[c][koef_user[c]]);
+            })
+            sums.push(1 - sm)
+        });
+        
+        //rescaling scale
+        var gs = new geostats(sums);
+        var breaks = gs.getClassJenks(5);
+        if (breaks[1] === breaks[4]) {
+            colScl.domain([0.5]);
+            colScl.range([
+                'rgba(215,25,28,0.8)',
+                'rgba(26,150,65,0.8)'
+            ]);
+        } else {
+            colScl.domain(breaks.slice(1,5));
+            colScl.range([
+                'rgba(215,25,28,0.8)',
+                'rgba(253,174,97,0.8)',
+                'rgba(255,255,191,0.8)',
+                'rgba(166,217,106,0.8)',
+                'rgba(26,150,65,0.8)'
+            ]);
+        };
+        scl.domain([Math.min.apply(null, sums), Math.max.apply(null, sums)]); 
+        tema.changed()
     
-    //rescaling scale
-    var gs = new geostats(sums);
-    var breaks = gs.getClassJenks(5);
-    colScl.domain(breaks.slice(1,5))
-    scl.domain([Math.min.apply(null, sums), Math.max.apply(null, sums)]); 
-    tema.changed()
+    //$('.over').css('z-index', -1000); //zmizet loader
 });
 
 var koef = {
-    'exe': 0.02407,
-    'nezam': 0.01684,
-    'emise': 0.01175,
-    'ned_ms': 0.00895,
-    'vz_okr': 0.00866,
-    'ned_zdrav': 0.00843,
-    'ned_ss': 0.00797,
-    'prumysl': 0.00768,
-    'ned_net': 0.00651,
-    'rozvody': 0.00459,
-    'verici': -0.0049,
-    'bezpecnost': -0.01194,
-    'prirust': -0.01473,
-    'doziti_m': -0.01692
+    'exe': [0, 0.02407, 1],
+    'nezam': [0, 0.01684, 1],
+    'emise': [0, 0.01175, 1],
+    'ned_ms': [0, 0.00895, 1],
+    'vz_okr': [0, 0.00866, 1],
+    'ned_zdrav': [0, 0.00843, 1],
+    'ned_ss': [0, 0.00797, 1],
+    'prumysl': [0, 0.00768, 1],
+    'ned_net': [0, 0.00651, 1],
+    'rozvody': [0, 0.00459, 1],
+    'verici': [0, -0.0049, -1],
+    'bezpecnost': [0, -0.01194, -1],
+    'prirust': [0, -0.01473, -1],
+    'doziti_m': [0, -0.01692, -1]
 };
 
  var koef_user = {
@@ -136,7 +154,7 @@ function getIndex(ftr) {
     };
     var index = 0.50519; //intercept
     Object.keys(cols).forEach(function(c) {
-        index += (ob[c] * koef[c] * koef_user[c]);
+        index += (ob[c] * koef[c][koef_user[c]]);
     })
     return [1 - index, ob];
 };

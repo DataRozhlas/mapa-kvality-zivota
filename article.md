@@ -25,8 +25,12 @@ Detaily si můžete prohlédnout v následující mapě, kterou z dat mobilních
 <div id="cont">
     <div id="sliders"></div>
     <div id="map"></div>
+	<div class="over">
+		<div class="loader"></div>
+	</div>
 </div>
 <div id="tooltip">Vyberte obec v mapě.</div>
+
 </wide>
 
 
