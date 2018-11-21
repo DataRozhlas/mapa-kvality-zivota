@@ -52,6 +52,7 @@ fs.readdirSync('./js/').forEach(file => {
   scriptInput += fs.readFileSync('./js/' + file, 'utf8');
 });
 
+
 if (process.argv[2] !== "test") {
     scriptInput = babel.transformSync(scriptInput,{'presets': ['@babel/preset-env']}).code;
     scriptInput = UglifyJS.minify(scriptInput, {

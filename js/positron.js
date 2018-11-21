@@ -2250,4 +2250,4 @@ var positronStyle = {
   "sprite":"https://maps.tilehosting.com/styles/positron/sprite",
   "version":8,
   "zoom":0.8902641636539237
-}
+};
