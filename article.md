@@ -41,11 +41,103 @@ Median proto zkusil vyjádřit důležitost ukazatelů pro index celkové kvalit
 
 Rozdíly mezi tím, co Češi považují za důležité a co je důležité z hlediska zastoupení politicky a společensky nespokojených skupin, ukazuje následující tabulka.
 
-<h3>TABLICA</h3>
+<wide>
+<table class="table table-bordered table-hover table-condensed">
+<thead><tr><th title="Field #1">Ukazatel</th>
+<th title="Field #2">Proměnná</th>
+<th title="Field #3">Subjektivně</th>
+<th title="Field #4">Objektivně</th>
+</tr></thead>
+<tbody><tr>
+<td>Nezaměstnanost</td>
+<td>Míra nezaměstnanosti (2016)</td>
+<td>++++</td>
+<td>++</td>
+</tr>
+<tr>
+<td>Exekuce</td>
+<td>Počet exekucí na obyvatele (2017)</td>
+<td>+++++</td>
+<td>+++</td>
+</tr>
+<tr>
+<td>Bezpečnost</td>
+<td>Počet obyvatel na kriminální čin (2016)</td>
+<td>+++++</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Závislost na průmyslu</td>
+<td>Pracující v průmyslu / zaměstnaní (2011)</td>
+<td>0</td>
+<td>+++</td>
+</tr>
+<tr>
+<td>Emise</td>
+<td>Procento území nad hranicí znečištění (2016)</td>
+<td>++++</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Vzdálenost k okresnímu městu</td>
+<td>Vzdušná k hlavnímu městu okresu</td>
+<td>+++</td>
+<td>+++</td>
+</tr>
+<tr>
+<td>Nedostupnost mateřských škol</td>
+<td>Indikátor, že v obci není MŠ nebo je počet dětí na MŠ v ORP vyšší než medián (2016)</td>
+<td>++++</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Nedostupnost středních škol</td>
+<td>Počet dětí na SŠ (2016)</td>
+<td>+++</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Nedostupnost zdravotních zařízení</td>
+<td>Počet obyvatel na zdravotnické zařízení (2016)</td>
+<td>++++</td>
+<td>+</td>
+</tr>
+<tr>
+<td>Nedostupnost rychlého internetu</td>
+<td>Kategorie 1-3 podle počtu poskytovatelů rychlého internetu (2016)</td>
+<td>++</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Dlouhověkost</td>
+<td>Naděje dožití mužů (2012-2016)</td>
+<td>++</td>
+<td>++++</td>
+</tr>
+<tr>
+<td>Přírůstek obyvatel</td>
+<td>Procento přírůstku (2012-2017)</td>
+<td>+++</td>
+<td>++</td>
+</tr>
+<tr>
+<td>Index rozvodovosti</td>
+<td>Počet rozvodů / manželství (2017)</td>
+<td>++</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Procento věřících</td>
+<td>Procento věřících (SLDB 2011)</td>
+<td>0</td>
+<td>+</td>
+</tr>
+</tbody></table>
+</wide>
 
 Za protestní volbu odrážející politickou nespokojenost přitom autoři modelu považují volbu KSČM, SPD nebo rozhodnutí nevolit v parlamentních volbách 2017. I tady se opírají o data Medianu: podle výzkumu MML-TGI 2017 jsou právě voliči těchto dvou stran nejčastěji nespokojeni se společenským a politickým vývojem. U SPD je to 54 procent voličů, u KSČM 50 procent.
 
-<div style="width: 600px" id="nespokojenost"></div>
+<div style="max-width: 100%; height: 400px" id="nespokojenost"></div>
 
 ## Vysočinsko-orlický pás štěstí
 
