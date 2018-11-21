@@ -22,9 +22,14 @@
     z-index: 10;
 }
 
+#sliders h3 {
+    margin-top: 0px;
+}
+
 #sliderbox {
     padding: 10px;
     display: none;
+    margin-top: 0px;
 }
 
 #tooltip {
@@ -77,9 +82,20 @@
 #closeslid {
     position: absolute;
     right: 5px;
-    top: 5px;
+    top: 0px;
     font-size: 30px;
     z-index: 11;
+}
+
+.butt {
+    width: auto;
+    float:left;
+    padding: 3px 5px 3px 5px;
+    margin: 0 10px 0 0 ;
+    border-radius: 5px;
+    background-color:rgba(0,60,136,.5);
+    color: white;
+    cursor: pointer;
 }
 
 #closeslid:hover {
@@ -89,4 +105,16 @@
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.rotate {
+-moz-transform: rotate(-45.0deg);  /* FF3.5+ */
+-ms-transform: rotate(-45.0deg);  /* IE9+ */
+-o-transform: rotate(-45.0deg);  /* Opera 10.5 */
+-webkit-transform: rotate(-45.0deg);  /* Safari 3.1+, Chrome */
+ transform: rotate(-45.0deg);  /* Standard */
+}
+
+.thead {
+    height: 45px;
 }

@@ -48,27 +48,25 @@ var cols = {
     'ned_ms': 'Dostuopnost MŠ',
     'ned_ss': 'Dostupnost SŠ',
     'ned_zdrav': 'Dostupnost zdrav. zař.',
-    'exe': 'Exekucí na obyv.',
+    'exe': 'Podíl exekucí.',
     'prumysl': 'Podíl prac. v průmyslu',
     'bezpecnost': 'Bezpečnost',
     'prirust': 'Přírůstek obyvatel',
     'verici': 'Procento věřících',
     'ned_net': 'Dostupnost internetu',
-    'vz_okr': 'Vzdálenost k okresnímu městu'
+    'vz_okr': 'Vzdálenost k okr. městu'
 };
 
-var radios = '';
+var radios = '<div id="closeslid">&#x2612;</div><h3>Na čem vám záleží?</h3><div><div class="butt" id="deselect">Vypnout vše</div><div class="butt" id="modmedian">model Median</div></div>'
+        + '<table><tr class="thead"><th></th><th><div class="rotate">vůbec</div></th><th><div class="rotate">trochu</div></th><th><div class="rotate">hodně</th></div></tr>';
 Object.keys(cols).forEach(function(key){
-    radios += '<div class="radiob">' + cols[key]
-        + '<input class="rad_dis" type="radio" id="0_' + key + '" name="' + key + '" value="0" />'
-        + '<label for="0_' + key + '">0</label>'
-        + '<input class="rad_med" type="radio" id="05_' + key + '" name="' + key + '" value="1" checked />'
-        + '<label for="05_' + key + '">1</label>'
-        + '<input type="radio" id="1_' + key + '" name="' + key + '" value="2"/>'
-        + '<label for="1_' + key + '">2</label>'
-        + '</div>'
+    radios += '<tr><td>' + cols[key] + '</td>'
+        + '<td><input class="rad_dis" type="radio" id="0_' + key + '" name="' + key + '" value="0" /></td>'
+        + '<td><input class="rad_med" type="radio" id="05_' + key + '" name="' + key + '" value="1" checked /></td>'
+        + '<td><input type="radio" id="1_' + key + '" name="' + key + '" value="2"/></td>'
+        + '</tr>'
 });
-radios += '<div id="closeslid">&#x2612;</div><div><div id="deselect">Vypnout vše</div><div id="modmedian">model Median</div>'
+radios += '</table>'
 document.getElementById('sliderbox').innerHTML = radios;
 
 $('#deselect').click(function() {
