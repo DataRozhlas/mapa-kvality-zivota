@@ -7,9 +7,11 @@ var data;
 var base = new ol.layer.VectorTile({
     declutter: true,
     source: new ol.source.VectorTile({
-        attributions: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> ' +
-        '© <a href="https://www.openstreetmap.org/copyright">' +
-        'OpenStreetMap contributors</a>',
+        attributions: '© <a target="_blank" href="https://www.mapbox.com/map-feedback/">Mapbox</a>, ' +
+        '© přispěvatelé <a target="_blank" href="https://www.openstreetmap.org/copyright">' +
+        'OpenStreetMap</a>, ' + 
+        'data a model <a target="_blank" href="http://www.median.eu">' +
+        'Median</a>',
         format: new ol.format.MVT(),
         url: 'https://data.irozhlas.cz/tiles/{z}/{x}/{y}.pbf'
     })
@@ -32,7 +34,7 @@ var map = new ol.Map({
     })
 });
 
-$.getJSON('./data/data.json', function(d) {
+$.getJSON('https://data.irozhlas.cz/mapa-kvality-zivota/data/data.json', function(d) {
     data = d;
     olms.applyStyle(base, positronStyle, 'openmaptiles').then(function() {
         map.addLayer(base);
@@ -45,10 +47,10 @@ var cols = {
     'emise': 'Emise',
     'doziti_m': 'Naděje dožití mužů',
     'rozvody': 'Rozvodovost',
-    'ned_ms': 'Dostuopnost MŠ',
+    'ned_ms': 'Dostupnost MŠ',
     'ned_ss': 'Dostupnost SŠ',
     'ned_zdrav': 'Dostupnost zdrav. zař.',
-    'exe': 'Podíl exekucí.',
+    'exe': 'Podíl exekucí',
     'prumysl': 'Podíl prac. v průmyslu',
     'bezpecnost': 'Bezpečnost',
     'prirust': 'Přírůstek obyvatel',
@@ -70,19 +72,27 @@ radios += '</table>'
 document.getElementById('sliderbox').innerHTML = radios;
 
 $('#deselect').click(function() {
+    $('.over').show()
     $('.rad_dis').prop('checked',true);
     Object.keys(koef_user).forEach(function(v) {
         koef_user[v] = 0;
     });
-    updateMap();
+    window.setTimeout(function() {
+        updateMap()
+        $('.over').hide()
+    }, 100)
 });
 
 $('#modmedian').click(function() {
+    $('.over').show()
     $('.rad_med').prop('checked', true);
     Object.keys(koef_user).forEach(function(v) {
         koef_user[v] = 1;
     });
-    updateMap();
+    window.setTimeout(function() {
+        updateMap()
+        $('.over').hide()
+    }, 100)
 });
 
 $('#showsliders').click(function() {
@@ -130,8 +140,12 @@ function updateMap() {
 };
 
 $('input[type=radio]').change(function(e) {
+    $('.over').show()
     koef_user[e.currentTarget.name] = parseFloat(e.currentTarget.defaultValue);
-    updateMap(); 
+    window.setTimeout(function() {
+        updateMap()
+        $('.over').hide()
+    }, 100)
 });
 
 var koef = {
@@ -214,9 +228,6 @@ function getColor(ftr) {
 var tema = new ol.layer.VectorTile({
     declutter: true,
     source: new ol.source.VectorTile({
-        attributions: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> ' +
-        '© <a href="https://www.openstreetmap.org/copyright">' +
-        'OpenStreetMap contributors</a>',
         format: new ol.format.MVT(),
         url: './tiles/{z}/{x}/{y}.pbf'
     }),
@@ -228,9 +239,9 @@ var tema = new ol.layer.VectorTile({
 function makeTooltip(ftr) {
     var out = getIndex(ftr)
     if (out[0] == -1) {
-        document.getElementById('tooltip').innerHTML = 'Vyberte obec';
+        document.getElementById('tooltip').innerHTML = 'Vyberte obec v mapě';
     } else {
-        document.getElementById('tooltip').innerHTML = out[1].nazev + ' (okres ' + out[1].okres + ')<br>ASPEN index: '+ Math.round(scl(out[0]) * 1000) / 10;
+        document.getElementById('tooltip').innerHTML = out[1].nazev + ' (okres ' + out[1].okres + ')<br>index kval. života: '+ Math.round(scl(out[0]) * 1000) / 10;
     }
 };
 
