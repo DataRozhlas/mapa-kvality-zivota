@@ -229,7 +229,7 @@ var tema = new ol.layer.VectorTile({
     declutter: true,
     source: new ol.source.VectorTile({
         format: new ol.format.MVT(),
-        url: './tiles/{z}/{x}/{y}.pbf'
+        url: 'https://data.irozhlas.cz/mapa-kvality-zivota/tiles/{z}/{x}/{y}.pbf'
     }),
     style: function(feature) {
       return getColor(feature.properties_)
