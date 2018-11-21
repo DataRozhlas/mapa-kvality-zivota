@@ -4,7 +4,7 @@ published: "22. listopadu 2018"
 coverimg: https://www.irozhlas.cz/sites/default/files/styles/zpravy_snowfall/public/uploader/xxx_181121-201856_jab.png?itok=JPKSud8v
 coverimg_note: ""
 styles: [https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.2.0/css/ol.css]
-libraries: [jquery, highcharts, https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.2.0/build/ol.js, https://openmaptiles.org/maps/olms.js, https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js, https://unpkg.com/geostats@1.5.0/lib/geostats.min.js] #datatables
+libraries: [jquery, highcharts, https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.2.0/build/ol.js, https://openmaptiles.org/maps/olms.js, https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js, https://unpkg.com/geostats@1.5.0/lib/geostats.min.js]
 options: []
 ---
 Nezaměstnanost, podíl exekucí, bezpečnost, závislost na průmyslu, vzdálenost od okresního města, dostupnost lékařské péče, dostupnost středních a mateřských škol, možnost připojení k rychlému internetu, dlouhověkost, přírůstek obyvatel, rozvodovost a počet věřících: těchto čtrnáct veřejně dostupných datových sad v rozlišení na obce nebo okresy ukazuje mapa kvality života.
@@ -44,91 +44,91 @@ Rozdíly mezi tím, co Češi považují za důležité a co je důležité z hl
 <wide>
 <table class="table table-bordered table-hover table-condensed">
 <thead><tr><th title="Field #1">Ukazatel</th>
-<th title="Field #2">Proměnná</th>
-<th title="Field #3">Subjektivně</th>
-<th title="Field #4">Objektivně</th>
+<th title="Field #2" class="mobilemenot">Proměnná</th>
+<th title="Field #3">Subj.</th>
+<th title="Field #4">Obj.</th>
 </tr></thead>
 <tbody><tr>
 <td>Nezaměstnanost</td>
-<td>Míra nezaměstnanosti (2016)</td>
+<td class="mobilemenot">Míra nezaměstnanosti (2016)</td>
 <td>++++</td>
 <td>++</td>
 </tr>
 <tr>
 <td>Exekuce</td>
-<td>Počet exekucí na obyvatele (2017)</td>
+<td class="mobilemenot">Počet exekucí na obyvatele (2017)</td>
 <td>+++++</td>
 <td>+++</td>
 </tr>
 <tr>
 <td>Bezpečnost</td>
-<td>Počet obyvatel na kriminální čin (2016)</td>
+<td class="mobilemenot">Počet obyvatel na kriminální čin (2016)</td>
 <td>+++++</td>
 <td>0</td>
 </tr>
 <tr>
 <td>Závislost na průmyslu</td>
-<td>Pracující v průmyslu / zaměstnaní (2011)</td>
+<td class="mobilemenot">Pracující v průmyslu / zaměstnaní (2011)</td>
 <td>0</td>
 <td>+++</td>
 </tr>
 <tr>
 <td>Emise</td>
-<td>Procento území nad hranicí znečištění (2016)</td>
+<td class="mobilemenot">Procento území nad hranicí znečištění (2016)</td>
 <td>++++</td>
 <td>0</td>
 </tr>
 <tr>
 <td>Vzdálenost k okresnímu městu</td>
-<td>Vzdušná k hlavnímu městu okresu</td>
+<td class="mobilemenot">Vzdušná k hlavnímu městu okresu</td>
 <td>+++</td>
 <td>+++</td>
 </tr>
 <tr>
 <td>Nedostupnost mateřských škol</td>
-<td>Indikátor, že v obci není MŠ nebo je počet dětí na MŠ v ORP vyšší než medián (2016)</td>
+<td class="mobilemenot">Indikátor, že v obci není MŠ nebo je počet dětí na MŠ v ORP vyšší než medián (2016)</td>
 <td>++++</td>
 <td>0</td>
 </tr>
 <tr>
 <td>Nedostupnost středních škol</td>
-<td>Počet dětí na SŠ (2016)</td>
+<td class="mobilemenot">Počet dětí na SŠ (2016)</td>
 <td>+++</td>
 <td>+</td>
 </tr>
 <tr>
 <td>Nedostupnost zdravotních zařízení</td>
-<td>Počet obyvatel na zdravotnické zařízení (2016)</td>
+<td class="mobilemenot">Počet obyvatel na zdravotnické zařízení (2016)</td>
 <td>++++</td>
 <td>+</td>
 </tr>
 <tr>
 <td>Nedostupnost rychlého internetu</td>
-<td>Kategorie 1-3 podle počtu poskytovatelů rychlého internetu (2016)</td>
+<td class="mobilemenot">Kategorie 1-3 podle počtu poskytovatelů rychlého internetu (2016)</td>
 <td>++</td>
 <td>0</td>
 </tr>
 <tr>
 <td>Dlouhověkost</td>
-<td>Naděje dožití mužů (2012-2016)</td>
+<td class="mobilemenot">Naděje dožití mužů (2012-2016)</td>
 <td>++</td>
 <td>++++</td>
 </tr>
 <tr>
 <td>Přírůstek obyvatel</td>
-<td>Procento přírůstku (2012-2017)</td>
+<td class="mobilemenot">Procento přírůstku (2012-2017)</td>
 <td>+++</td>
 <td>++</td>
 </tr>
 <tr>
 <td>Index rozvodovosti</td>
-<td>Počet rozvodů / manželství (2017)</td>
+<td class="mobilemenot">Počet rozvodů / manželství (2017)</td>
 <td>++</td>
 <td>0</td>
 </tr>
 <tr>
 <td>Procento věřících</td>
-<td>Procento věřících (SLDB 2011)</td>
+<td class="mobilemenot">Procento věřících (SLDB 2011)</td>
 <td>0</td>
 <td>+</td>
 </tr>
@@ -273,7 +273,9 @@ Na věřící a nevěřící část zase Česko poměrně spolehlivě rozděluje
 
 Model také ilustruje vztah mezi celkovou kvalitou života a politickým chováním. Nízká kvalita života má k protestní volbě blízko hlavně u větších obcí – právě tam je vztah mezi oběma ukazateli poměrně silný. V malých obcích více rozhodují osobnosti starostů a lokální politika.
 
-<h3>GRAF KVALITA ŽIVOTA × PROTESTNÍ VOLBA</h3>
+<div style="width: 300px"><image src="https://www.irozhlas.cz/sites/default/files/uploader/x5_181121-221324_jab.png"></div>
+<div style="width: 300px"><image src="https://www.irozhlas.cz/sites/default/files/uploader/x4_181121-221324_jab.png"></div>
+<div style="width: 300px"><image src="https://www.irozhlas.cz/sites/default/files/uploader/x3_181121-221323_jab.png"></div>
 
 Protestní volba, tedy hlas pro SPD, KSČM nebo neúčast ve volbách, se v jednotlivých obcích pohybuje mezi 35 a 80 procenty. Ve třicítce větších obcí s nejvyšší kvalitou života přitom takto volí jen okolo 40 až 45 procent obyvatel, ve třicítce s nejnižší kvalitou života je to 65 až 70 procent.
 
@@ -297,5 +299,4 @@ Autoři indexu kvality života proto navrhují několik opatření, která by do
 
 Dalšími ekonomickými faktory jsou podle výzkumníků dostupné obecní bydlení či nižší zdanění levné práce. Mluví také o daňové asignaci – možnosti převést část daní vybranému spolku nebo sdružení – a dalších opatřeních, která by podpořila občanský a kulturní život.
 
->>>>>>> 76665aec77069b32e830a7e96734ee6ea1ed42b9
 „V investicích do vzdělávání je nutné zaměřit se na snižování regionálních rozdílů v kvalitě základních a středních škol, které pomáhají reprodukovat chudobu. Měli bychom také vyrovnávat šance dětí ze znevýhodněného prostředí v raném věku, třeba teď aktuálními obědy zdarma ve školkách nebo speciálním předškolním vzděláváním,“ uzavírá Prokop.

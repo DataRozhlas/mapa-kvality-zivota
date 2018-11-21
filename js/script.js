@@ -61,3 +61,17 @@ Highcharts.chart('nespokojenost', {
 });
 
 })
+
+function detectmob() {
+   if(screen.width <= 600) {
+     return true;
+   } else {
+     return false;
+   }
+}
+
+$(document).ready(function() {
+  if(detectmob()) {
+    $('.mobilemenot').remove();
+  }
+});

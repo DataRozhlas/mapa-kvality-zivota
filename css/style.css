@@ -120,3 +120,33 @@
 .thead {
     height: 45px;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin:50px auto;
+    font-family: "Noticia Text",serif !important;
+    }
+
+/* Zebra striping */
+tr:nth-of-type(odd) {
+    background: #eee;
+    }
+
+thead {
+    border-top: 0px !important;
+    border-bottom: 0px !important;
+}
+
+th {
+    background: #3498db;
+    color: white;
+    font-weight: bold;
+    }
+
+td, th {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+    font-size: 14px;
+    }
