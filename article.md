@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-title: "Interaktivní mapa kvality života: nastavte si vlastní kritéria a podívejte se, ve kterých obcích se dobře žije"
+﻿title: "Interaktivní mapa kvality života: nastavte si vlastní kritéria a podívejte se, ve kterých obcích se dobře žije"
 perex: "Byl by pro vás problém žít v místě s častými exekucemi, nedýchatelným vzduchem nebo třeba hodně/málo věřícími? Model, který vytvořili datoví novináři serveru iRozhlas se sociologem Danielem Prokopem a agenturou Median, umožní sestavit mapu subjektivní kvality života. Ukazuje také, jak blízko je od ní k politické nespokojenosti."
 published: "22. listopadu 2018"
 coverimg: https://www.irozhlas.cz/sites/default/files/styles/zpravy_snowfall/public/uploader/xxx_181121-201856_jab.png?itok=JPKSud8v
