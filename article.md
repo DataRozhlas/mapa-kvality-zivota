@@ -23,11 +23,11 @@ Detaily si můžete prohlédnout v následující mapě, kterou z dat mobilních
 
 <wide>
 <div id="cont">
-    <div id="sliders"></div>
-    <div id="map"></div>
-	<div class="over">
-		<div class="loader"></div>
+    <div id="sliders">
+		<div id="showsliders">&#9881;</div>
+		<div id="sliderbox"></div>
 	</div>
+    <div id="map"></div>
 </div>
 <div id="tooltip">Vyberte obec v mapě.</div>
 

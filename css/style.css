@@ -1,30 +1,36 @@
 #cont {
-    display: flex;
-    flex-wrap: nowrap;
-    width: 1000px;
+    width: 100%;
+    height: 90vh;
 }
 #map {
-    width: 80%;
-    height: 90vh;
+    width: 100%;
+    height: 100%;
 }
 
 #sliders {
-  width: 20%;
-  height: 90vh;
-  font-size: 10pt;
+    position: absolute;
+    left: 25px;
+    top: 70px;
+    width: auto;
+    height: auto;
+    font-size: 10pt;
+    background-color: white;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgrey;
+    z-index: 10;
 }
 
-#sliders p {
-    margin-top: 0px;
-    margin-bottom: 2px;
-}
-
-#sliders h3 {
-    margin-top: 0px;
-    margin-bottom: 2px;
+#sliderbox {
+    padding: 10px;
+    display: none;
 }
 
 #tooltip {
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgrey;
     position: absolute;
     top: 10px;
     right: 10px;
@@ -48,13 +54,36 @@
     position: absolute;
     top: 30%;
     left: 50%;
-    border: 16px solid #9ecae1; /* Light grey */
-    border-top: 16px solid #de2d26; /* Blue */
+    border: 16px solid #9ecae1;
+    border-top: 16px solid #de2d26;
     border-radius: 50%;
     width: 120px;
     height: 120px;
     animation: spin 2s linear infinite;
     opacity: 1;
+}
+
+#showsliders {
+    font-size: 30px;
+    font-weight: bold;
+    color:white;
+    background-color:rgba(0,60,136,.5);
+}
+
+#showsliders:hover {
+    cursor: pointer;
+}
+
+#closeslid {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-size: 30px;
+    z-index: 11;
+}
+
+#closeslid:hover {
+    cursor: pointer;
 }
 
 @keyframes spin {

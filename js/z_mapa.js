@@ -2,6 +2,8 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 var isIE = /*@cc_on!@*/false || !!document.documentMode;
 var isEdge = !isIE && !!window.StyleMedia;
 
+var data;
+
 var base = new ol.layer.VectorTile({
     declutter: true,
     source: new ol.source.VectorTile({
@@ -30,10 +32,13 @@ var map = new ol.Map({
     })
 });
 
-olms.applyStyle(base, positronStyle, 'openmaptiles').then(function() {
-    map.addLayer(base);
-    map.addLayer(tema);
-});
+$.getJSON('./data/data.json', function(d) {
+    data = d;
+    olms.applyStyle(base, positronStyle, 'openmaptiles').then(function() {
+        map.addLayer(base);
+        map.addLayer(tema);
+    });
+  });
 
 var cols = {
     'nezam': 'Nezaměstnanost',
@@ -52,56 +57,83 @@ var cols = {
     'vz_okr': 'Vzdálenost k okresnímu městu'
 };
 
-var radios = '<h3>Jak důležité jsou pro vás následující parametry?</h3>';
+var radios = '';
 Object.keys(cols).forEach(function(key){
-    radios += '<p>' + cols[key] + '<form action="" method="post">'
-        + '<input type="radio" id="0_' + key + '" name="' + key + '" value="0" />'
-        + '<label for="0_' + key + '">Vůbec</label>'
-        + '<input type="radio" id="05_' + key + '" name="' + key + '" value="1" checked />'
-        + '<label for="05_' + key + '">Trochu</label>'
+    radios += '<div class="radiob">' + cols[key]
+        + '<input class="rad_dis" type="radio" id="0_' + key + '" name="' + key + '" value="0" />'
+        + '<label for="0_' + key + '">0</label>'
+        + '<input class="rad_med" type="radio" id="05_' + key + '" name="' + key + '" value="1" checked />'
+        + '<label for="05_' + key + '">1</label>'
         + '<input type="radio" id="1_' + key + '" name="' + key + '" value="2"/>'
-        + '<label for="1_' + key + '">Hodně</label>'
-        + '</form></p>'
+        + '<label for="1_' + key + '">2</label>'
+        + '</div>'
+});
+radios += '<div id="closeslid">&#x2612;</div><div><div id="deselect">Vypnout vše</div><div id="modmedian">model Median</div>'
+document.getElementById('sliderbox').innerHTML = radios;
+
+$('#deselect').click(function() {
+    $('.rad_dis').prop('checked',true);
+    Object.keys(koef_user).forEach(function(v) {
+        koef_user[v] = 0;
+    });
+    updateMap();
 });
 
-document.getElementById('sliders').innerHTML = radios;
+$('#modmedian').click(function() {
+    $('.rad_med').prop('checked', true);
+    Object.keys(koef_user).forEach(function(v) {
+        koef_user[v] = 1;
+    });
+    updateMap();
+});
+
+$('#showsliders').click(function() {
+    $('#showsliders').hide()
+    $('#sliderbox').show()
+});
+
+$('#closeslid').click(function() {
+    $('#sliderbox').hide()
+    $('#showsliders').show()
+});
+
+function updateMap() {
+// prepocitat mins a maxs modelu
+    var sums = [];
+    Object.values(data).forEach(function(obec) {
+        var sm = 0.50519; //intercept
+        Object.keys(cols).forEach(function(c) {
+            sm += (obec[c] * koef[c][koef_user[c]]);
+        })
+        sums.push(1 - sm)
+    });
+
+    //rescaling scale
+    var gs = new geostats(sums);
+    var breaks = gs.getClassJenks(5);
+    if (breaks[1] === breaks[4]) {
+        colScl.domain([0.5]);
+        colScl.range([
+            'rgba(215,25,28,0.8)',
+            'rgba(26,150,65,0.8)'
+        ]);
+    } else {
+        colScl.domain(breaks.slice(1,5));
+        colScl.range([
+            'rgba(215,25,28,0.8)',
+            'rgba(253,174,97,0.8)',
+            'rgba(255,255,191,0.8)',
+            'rgba(166,217,106,0.8)',
+            'rgba(26,150,65,0.8)'
+        ]);
+    };
+    scl.domain([Math.min.apply(null, sums), Math.max.apply(null, sums)]); 
+    tema.changed();
+};
 
 $('input[type=radio]').change(function(e) {
-    //$('.over').css('z-index', 1000); //zobrazit loader
     koef_user[e.currentTarget.name] = parseFloat(e.currentTarget.defaultValue);
-        // prepocitat mins a maxs modelu
-        var sums = [];
-        Object.values(data).forEach(function(obec) {
-            var sm = 0.50519; //intercept
-            Object.keys(cols).forEach(function(c) {
-                sm += (obec[c] * koef[c][koef_user[c]]);
-            })
-            sums.push(1 - sm)
-        });
-        
-        //rescaling scale
-        var gs = new geostats(sums);
-        var breaks = gs.getClassJenks(5);
-        if (breaks[1] === breaks[4]) {
-            colScl.domain([0.5]);
-            colScl.range([
-                'rgba(215,25,28,0.8)',
-                'rgba(26,150,65,0.8)'
-            ]);
-        } else {
-            colScl.domain(breaks.slice(1,5));
-            colScl.range([
-                'rgba(215,25,28,0.8)',
-                'rgba(253,174,97,0.8)',
-                'rgba(255,255,191,0.8)',
-                'rgba(166,217,106,0.8)',
-                'rgba(26,150,65,0.8)'
-            ]);
-        };
-        scl.domain([Math.min.apply(null, sums), Math.max.apply(null, sums)]); 
-        tema.changed()
-    
-    //$('.over').css('z-index', -1000); //zmizet loader
+    updateMap(); 
 });
 
 var koef = {
