@@ -241,7 +241,8 @@ function makeTooltip(ftr) {
     if (out[0] == -1) {
         document.getElementById('tooltip').innerHTML = 'Vyberte obec v mapě';
     } else {
-        document.getElementById('tooltip').innerHTML = out[1].nazev + ' (okres ' + out[1].okres + ')<br>index kval. života: '+ Math.round(scl(out[0]) * 1000) / 10;
+        document.getElementById('tooltip').innerHTML = out[1].nazev + ' (okres ' + out[1].okres + ')<br>index kval. života: '
+        + Math.round(scl(out[0]) * 10) * 10;
     }
 };
 
