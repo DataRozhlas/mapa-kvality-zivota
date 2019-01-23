@@ -1,0 +1,5 @@
+tippecanoe -o tiles.mbtiles -z 12 -pk -pC -b 20 -pS -pt obce.geojson 
+
+mb-util tiles.mbtiles ./tiles --image_format=pbf
+
+aws s3 cp ./tiles s3://datarozhlas/senat18_2_okrsky/tiles --recursive --acl public-read
