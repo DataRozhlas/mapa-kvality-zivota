@@ -2247,7 +2247,7 @@ var positronStyle = {
         "url":"https://data.irozhlas.cz/tiles/v3.json"
      }
   },
-  "sprite":"https://maps.tilehosting.com/styles/positron/sprite",
+  //"sprite":"https://maps.tilehosting.com/styles/positron/sprite",
   "version":8,
   "zoom":0.8902641636539237
 };
