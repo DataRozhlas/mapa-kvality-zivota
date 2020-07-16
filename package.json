@@ -21,7 +21,7 @@
     "@babel/core": "^7.1.5",
     "@babel/preset-env": "^7.1.5",
     "clean-css": "^4.2.1",
-    "marked": "^0.5.1",
+    "marked": "^0.6.1",
     "node-yaml": "^3.1.1",
     "uglify-js": "^3.4.9"
   },
