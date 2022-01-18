@@ -3,8 +3,8 @@ perex: "Byl by pro vás problém žít v místě s častými exekucemi, nedýcha
 published: "22. listopadu 2018"
 coverimg: https://www.irozhlas.cz/sites/default/files/styles/zpravy_snowfall/public/uploader/xxx_181121-201856_jab.png?itok=JPKSud8v
 coverimg_note: ""
-styles: [https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.2.0/css/ol.css]
-libraries: [jquery, highcharts, https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.2.0/build/ol.js, https://cdn.jsdelivr.net/npm/ol-mapbox-style@3.6.2/dist/olms.min.js, https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js, https://unpkg.com/geostats@1.5.0/lib/geostats.min.js]
+styles: [https://data.irozhlas.cz/mapa-kvality-zivota/ol/ol.css]
+libraries: [jquery, highcharts, https://data.irozhlas.cz/mapa-kvality-zivota/ol/ol.js, https://cdn.jsdelivr.net/npm/ol-mapbox-style@3.6.2/dist/olms.min.js, https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js, https://unpkg.com/geostats@1.5.0/lib/geostats.min.js]
 options: []
 ---
 Nezaměstnanost, podíl exekucí, bezpečnost, závislost na průmyslu, vzdálenost od okresního města, dostupnost lékařské péče, dostupnost středních a mateřských škol, možnost připojení k rychlému internetu, dlouhověkost, přírůstek obyvatel, rozvodovost a počet věřících: těchto čtrnáct veřejně dostupných datových sad v rozlišení na obce nebo okresy ukazuje mapa kvality života.
